@@ -5,7 +5,7 @@ date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
 
 - Please make sure *if at all possible* that you have the latest version of R installed (3.2.3)
 - An up-to-date version of RStudio is strongly recommended, unless you have a programming environment that you prefer.
-- Try to install the `core` and `extra0` packages below. If you can, install the extras, but don't worry if you run into trouble; I went a little bit nuts including almost any package that I ever use for mixed modeling or related tasks ... in particular you should make sure you have `lme4` version 1.1-10.
+- Try to install the `core` and `extra0` packages below. If you can, install the other sets of extra packages, but don't worry if you run into trouble; I went a little bit nuts including almost any package that I ever use for mixed modeling or related tasks ... do make sure you have `lme4` version 1.1-10 installed though.
 
 First update your current packages:
 
