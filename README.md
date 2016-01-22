@@ -1,2 +1,5 @@
 # ottawa_mm
-materials for Ottawa mixed model workshop, 24-25 Jan 2016
+
+Materials for Ottawa mixed model workshop, 24-25 Jan 2016.
+
+- [Package installation](https://rawgit.com/bbolker/ottawa_mm/master/packages.html)

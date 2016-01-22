@@ -1,0 +1,82 @@
+---
+title: "Package installation"
+date: "`r format(Sys.time(), '%H:%M %d %B %Y ')`"
+---
+
+- Please make sure *if at all possible* that you have the latest version of R installed (3.2.3)
+- An up-to-date version of RStudio is strongly recommended, unless you have a programming environment that you prefer.
+- Try to install the `core` and `extra0` packages below. If you can, install the extras, but don't worry if you run into trouble; I went a little bit nuts including almost any package that I ever use for mixed modeling or related tasks ... in particular you should make sure you have `lme4` version 1.1-10.
+
+First update your current packages:
+
+```{r update,eval=FALSE}
+update.packages()
+```
+
+Now install a whole bunch of new ones, as necessary.
+
+```{r pkglist}
+core_pkgs <- c("lme4","lmerTest","MCMCglmm","pbkrtest","blme","ordinal")
+extra0_pkgs <- c("ggplot2","broom","dotwhisker","coda","devtools", "car")
+extra1_pkgs <- c("afex", "agridat", "AICcmodavg", "aods3", "arm", "bbmle",
+                "benchmark", "cAIC4", "dplyr", "effects", "emdbook", "gamm4",
+                "GGally", "ggplot2", "glmmLasso", "glmmML", "gridExtra", "hglm",
+                "HLMdiag", "Hmisc", "influence.ME", "knitr", 
+                "lqmm", "lsmeans", "MEMSS", "metafor", "mlmRev",
+                "multcomp", "MuMIn", "numDeriv",
+                "pedigreemm", "plotMCMC", "plotrix", "plyr", "R2admb",
+                "reshape2", "RLRsim", "rmarkdown", "robustlmm", "rockchalk",
+                "SASmixed", "simr", "sjPlot", "stargazer", "texreg","TMB")
+extra2_pkgs <- c("spaMM","R2jags","rstanarm","brms")
+```
+
+```{r rgraphviz,eval=FALSE,echo=FALSE}
+## Rgraphviz is only on Bioconductor now ...
+## don't use dependencies=TRUE (!)
+i1 <- installed.packages()
+r1 <- lapply(as.data.frame(i1)[c("Depends","Suggests","LinkingTo","Enhances")],
+       grep,pattern="Rgraphviz",ignore.case=TRUE)
+i1[unlist(r1),"Package"]
+## use http:// if https:// is problematic
+source("https://bioconductor.org/biocLite.R")
+biocLite("Rgraphviz")
+```
+
+```{r get_new}
+## install packages if not already installed
+get_new_pkgs <- function(pkgs,...) {
+    i1 <- installed.packages()
+    new_pkgs <- setdiff(pkgs,i1[,"Package"])
+    if (length(new_pkgs)>0)
+        install.packages(new_pkgs,...)
+}
+for (pkg_list in list(core_pkgs,extra0_pkgs,extra1_pkgs,extra2_pkgs)) {
+    get_new_pkgs(pkg_list)
+}
+```
+
+## Off-CRAN packages
+
+These packages are useful for some more advanced modeling, especially in ecology ... installation is optional.
+
+### INLA
+
+```{r inla,eval=FALSE}
+source("http://www.math.ntnu.no/inla/givemeINLA.R")
+```
+
+### `glmmADMB`
+
+```{r glmmADMB,eval=FALSE}
+install.packages("glmmADMB",
+                 type="source",
+                 repos=c("http://glmmadmb.r-forge.r-project.org/repos",
+                         getOption("repos")))
+```
+
+### `glmmTMB`
+
+```{r glmmTMB,eval=FALSE}
+devtools::install_github("glmmTMB/glmmTMB",sub="glmmTMB")
+```
+
