@@ -1,0 +1,56 @@
+---
+title: Topics/outline for mixed-model workshop
+bibliography: glmm.bib
+---
+
+## Basics
+
+- Overview, philosophical issues
+    - Definition of random vs fixed
+         - Philosophical
+         - Practical
+		 - Computational (shrinkage)
+		 - Focus
+    - Experimental design
+         - within- vs between-subject
+         - nested vs crossed, random-slopes models
+		 - Model specification; equations and formulas
+    - Picking a model: how to control model complexity
+         - counting parameters: Harrell's rules
+ 		 - @barr_random_2013 vs. @bates_parsimonious_2015, @matuschek_balancing_2015
+- Exploratory data visualization
+     - `ggplot2` basics for (moderately) high-dimensional data
+     - Cleveland hierarchy
+     - Alberta first [@wainer_visual_2001]: `reorder()`
+	 - `ggplot2`: `group` aesthetic, faceting for spaghetti plots
+- Basic model definitions: LMMs and simple GLMMs
+    - $\boldsymbol \eta = \mathbf X \boldsymbol \beta + \mathbf Z \mathbf b$
+    - $\mathbf Y \sim \textrm{Dist}(g^{-1}(\boldsymbol \eta))$
+    - $\mathbf b \sim \textrm{MVN}(\mathbf 0, \Sigma)$
+- Basic model fitting (`lme4`)
+- Model diagnostics
+- Basic inference (hypothesis testing and confidence intervals)
+- Graphical and textual presentation of results
+   
+## Intermediate
+
+- Troubleshooting
+    - Convergence errors
+	- Overfitted models
+- Intermediate GLMMs
+    - Overdispersion
+	- Zero-inflation
+- Predictions and predicted CIs
+- Intermediate graphics
+    - Prediction plots
+- Multivariate responses
+
+## Advanced
+
+- Temporal and spatial correlation
+- Ordinal models
+- Bayesian/MCMC approaches
+- Power analysis
+- Multi-type responses
+
+## References
